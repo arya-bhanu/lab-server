@@ -1,5 +1,13 @@
-import { Controller, Delete, Get, Param, ParseIntPipe } from '@nestjs/common';
+import {
+  Controller,
+  Delete,
+  Get,
+  Param,
+  ParseIntPipe,
+  Post,
+} from '@nestjs/common';
 import { ModulService } from 'src/service/modul/modul.service';
+import { ModulBackoffice as ModulBackofficeModel } from '@prisma/client';
 
 @Controller('backoffice/modul')
 export class ModulController {
@@ -12,5 +20,22 @@ export class ModulController {
   @Delete(':id')
   async deleteModul(@Param('id', ParseIntPipe) id: number) {
     return await this.modulService.deleteOne(id);
+  }
+
+  @Post()
+  async createModul(@Param() data: Omit<ModulBackofficeModel, 'id'>) {
+    return await this.modulService.addOne(data);
+  }
+
+  @Post('refresh')
+  async refresh() {
+    console.log('called');
+    return 'ok';
+  }
+
+  @Post('test')
+  async testWorker() {
+    await this.modulService.performOperations();
+    return 'ok';
   }
 }

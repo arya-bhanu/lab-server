@@ -6,7 +6,6 @@ export class PrismaService extends PrismaClient implements OnModuleInit {
   async onModuleInit() {
     try {
       await this.$connect();
-      console.log('Prisma connecting...');
     } catch (err) {
       console.error(err);
     }
