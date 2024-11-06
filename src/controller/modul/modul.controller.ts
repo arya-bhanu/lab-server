@@ -26,16 +26,4 @@ export class ModulController {
   async createModul(@Param() data: Omit<ModulBackofficeModel, 'id'>) {
     return await this.modulService.addOne(data);
   }
-
-  @Post('refresh')
-  async refresh() {
-    console.log('called');
-    return 'ok';
-  }
-
-  @Post('test')
-  async testWorker() {
-    await this.modulService.performOperations();
-    return 'ok';
-  }
 }
