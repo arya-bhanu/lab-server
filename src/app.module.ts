@@ -5,12 +5,9 @@ import { ConfigModule } from '@nestjs/config';
 import configuration from 'config/configuration';
 import { PrismaService } from './service/prisma.service';
 import { PrismaModule } from './module/prisma/prisma.module';
-import { CmsModule } from './module/cms/cms.module';
-import { CmsController } from './controller/cms/cms.controller';
-import { CmsService } from './service/cms/cms.service';
-import { ModulController } from './controller/modul/modul.controller';
-import { ModulModule } from './module/modul/modul.module';
-import { ModulService } from './service/modul/modul.service';
+import { CmsModule } from './module/cms-home/cms-home.module';
+import { CmsController } from './controller/cms-home/cms-home.controller';
+import { CmsService } from './service/cms-home/cms.-homeservice';
 
 @Module({
   imports: [
@@ -20,9 +17,8 @@ import { ModulService } from './service/modul/modul.service';
     }),
     PrismaModule,
     CmsModule,
-    ModulModule,
   ],
-  controllers: [AppController, CmsController, ModulController],
-  providers: [AppService, PrismaService, CmsService, ModulService],
+  controllers: [AppController, CmsController],
+  providers: [AppService, PrismaService, CmsService],
 })
 export class AppModule {}

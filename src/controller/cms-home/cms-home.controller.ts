@@ -1,12 +1,12 @@
 import { Body, Controller, Get, Post } from '@nestjs/common';
 import { Cms as CmsModel } from '@prisma/client';
-import { CmsService } from 'src/service/cms/cms.service';
+import { CmsService } from 'src/service/cms-home/cms.-homeservice';
 
-@Controller('cms')
+@Controller('cms/home')
 export class CmsController {
   constructor(private cmsService: CmsService) {}
 
-  @Get('home/all')
+  @Get('all')
   async findAllContentHome() {
     return await this.cmsService.getAll();
   }

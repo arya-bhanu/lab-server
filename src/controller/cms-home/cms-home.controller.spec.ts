@@ -1,5 +1,5 @@
 import { Test, TestingModule } from '@nestjs/testing';
-import { CmsController } from './cms.controller';
+import { CmsController } from './cms-home.controller';
 
 describe('CmsController', () => {
   let controller: CmsController;
